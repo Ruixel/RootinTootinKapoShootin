@@ -21,4 +21,10 @@ public class BulletController : MonoBehaviour
         transform.Translate(xInput, 0, 0);
 
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag != "Player" && collider.tag != "Bullet")
+            Destroy(gameObject);
+    }
 }

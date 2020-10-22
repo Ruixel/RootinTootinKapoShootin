@@ -35,16 +35,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // bullet shoot code
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, transform.position + new Vector3(1.5f, 0, 0), transform.rotation);
+        }
 
-
-        speed = 5;
-
-
+        // dash code
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             currentDashTime = dashTime;
         }
-
         if (currentDashTime > 0)
         {
             currentDashTime = currentDashTime - Time.deltaTime;
@@ -55,15 +56,8 @@ public class PlayerController : MonoBehaviour
             speed = normalSpeed;
         }
 
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Instantiate(bullet);
-        }
-
+        // movement code
         float xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-
         transform.Translate(xInput, 0, 0);
 
 
@@ -71,17 +65,15 @@ public class PlayerController : MonoBehaviour
         {
             float jumpVelocity = 10f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
-            
         }
 
+    }
 
-        void OnCollisionEnter (Collision collisionInfo)
-        { if (collisionInfo.collider.tag == "floor")
-            { 
-                Debug.Log("ground");
-            }
+    void OnCollisionEnter (Collision collisionInfo)
+    { if (collisionInfo.collider.tag == "floor")
+        { 
+            Debug.Log("ground");
         }
-
     }
 }
 
