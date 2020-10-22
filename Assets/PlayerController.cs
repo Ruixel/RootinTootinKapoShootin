@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     float dashTime = 0.3f;
     float currentDashTime = 0;
 
+
+    public GameObject bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,12 @@ public class PlayerController : MonoBehaviour
             speed = normalSpeed;
         }
 
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet);
+        }
 
         float xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
 
