@@ -34,4 +34,13 @@ public class EnemyController : MonoBehaviour
 
         transform.Translate(xInput, 0, 0);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
