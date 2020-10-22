@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Platform
+  - floor
   - Bullet
   layers:
   - Default

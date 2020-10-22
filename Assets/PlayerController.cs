@@ -13,13 +13,23 @@ public class PlayerController : MonoBehaviour
     float dashTime = 0.3f;
     float currentDashTime = 0;
 
+//<<<<<<< Updated upstream
 
     public GameObject bullet;
 
+//=======
+    private Rigidbody2D rigidbody2d;
+    
+//>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+    private void Awake()
+    {
+
+        rigidbody2d = transform.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -56,6 +66,29 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(xInput, 0, 0);
 
-    }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            float jumpVelocity = 10f;
+            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            
+        }
+
+
+        void OnCollisionEnter (Collision collisionInfo)
+        { if (collisionInfo.collider.tag == "floor")
+            { 
+                Debug.Log("ground");
+            }
+        }
+
+    }
 }
+
+
+
+
+
+
+
+
