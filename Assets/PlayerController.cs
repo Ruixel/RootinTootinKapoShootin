@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     float dashTime = 0.3f;
     float currentDashTime = 0;
+    public float jumpSpeed;
+    private bool isJumping;
 
 //<<<<<<< Updated upstream
 
@@ -62,22 +64,27 @@ public class PlayerController : MonoBehaviour
         // movement code
         float xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         transform.Translate(xInput, 0, 0);
+        //jump code
 
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             float jumpVelocity = 15f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            isJumping = true;
+        }
+       
+        void OnCollisionEnter2D(Collision2D other)
+
+        {
+            if (other.gameObject.CompareTag("floor"))
+            {
+                isJumping = false;
+            }
         }
 
     }
 
-    void OnCollisionEnter (Collision collisionInfo)
-    { if (collisionInfo.collider.tag == "floor")
-        { 
-            Debug.Log("ground");
-        }
-    }
+   
 }
 
 
