@@ -29,9 +29,6 @@ public class Health : MonoBehaviour
             if (onDeath != null)
             {
                 onDeath.Invoke();
-            } else
-            {
-                Debug.LogError("WHY IS ONDEATH NULL?", this);
             }
         }
     }
