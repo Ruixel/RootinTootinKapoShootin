@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class DamageOnTouch : MonoBehaviour
 {
+    [Tooltip("How much damage this enemy will do")]
+    public float damage = 10f;
+
     public Rigidbody2D enemyRigidBody { get; private set; }
 
     Collider2D m_collider;
@@ -22,7 +25,7 @@ public class DamageOnTouch : MonoBehaviour
         {
             Health player_hp = collision.gameObject.GetComponent<Health>();
             if (player_hp)
-                player_hp.takeDamage(10f, this.gameObject);
+                player_hp.takeDamage(damage, this.gameObject);
         }
     }
 }
