@@ -1305,6 +1305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9923203f692e60c4bb8c4673b5265c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 1
+  enemyDamageFromBullet: 1
   player: {fileID: 570887456}
 --- !u!50 &832921065
 Rigidbody2D:
@@ -3310,6 +3312,7 @@ GameObject:
   - component: {fileID: 2135443966}
   - component: {fileID: 2135443962}
   - component: {fileID: 2135443967}
+  - component: {fileID: 2135443968}
   m_Layer: 0
   m_Name: PatrollingEnemy
   m_TagString: Untagged
@@ -3329,6 +3332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71d73cb885ac11498b57509aa6132aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolEnemyHealth: 10
+  patrolEnemyDamagedFromBullet: 1
 --- !u!50 &2135443962
 Rigidbody2D:
   serializedVersion: 4
@@ -3453,3 +3458,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+--- !u!114 &2135443968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135443960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bad4069da36b94589c30c86ff43e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
