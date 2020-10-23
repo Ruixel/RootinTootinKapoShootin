@@ -5,21 +5,21 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
-    float speed = 5;
+    float speed = 7;
+    Vector3 moveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        moveDirection.z = 0f;
+        moveDirection.Normalize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float xInput = speed * Time.deltaTime;
-
-        transform.Translate(xInput, 0, 0);
-
+        transform.Translate(moveDirection * Time.deltaTime * speed);
     }
 
     void OnTriggerEnter2D(Collider2D collider)

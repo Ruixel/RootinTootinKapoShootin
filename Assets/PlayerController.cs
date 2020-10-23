@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 //<<<<<<< Updated upstream
 
-    public GameObject bullet;
+    public GameObject bulletPrefab;
 
 //=======
     private Rigidbody2D rigidbody2d;
@@ -38,10 +38,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Vector3 cursorInWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 displacementFromMouse = cursorInWorldPos - transform.position;
+        Vector3 directionToMouse = displacementFromMouse.normalized;
+
+
         // bullet shoot code
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(bullet, transform.position + new Vector3(1.5f, 0, 0), transform.rotation);
+            GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         }
 
         // dash code
@@ -64,8 +70,9 @@ public class PlayerController : MonoBehaviour
         // movement code
         float xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         transform.Translate(xInput, 0, 0);
+        
+        
         //jump code
-
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             float jumpVelocity = 15f;
@@ -73,14 +80,16 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
         }
     }
-        void OnCollisionEnter2D(Collision2D other)
 
+
+    void OnCollisionEnter2D(Collision2D other)
+
+    {
+        if (other.gameObject.CompareTag("floor"))
         {
-            if (other.gameObject.CompareTag("floor"))
-            {
-                isJumping = false;
-            }
+            isJumping = false;
         }
+    }
 }
 
 
