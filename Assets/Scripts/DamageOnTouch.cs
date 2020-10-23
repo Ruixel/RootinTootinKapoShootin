@@ -22,7 +22,7 @@ public class DamageOnTouch : MonoBehaviour
         {
             Health player_hp = collision.gameObject.GetComponent<Health>();
             if (player_hp)
-                player_hp.takeDamage(10f, this.gameObject);
+                player_hp.takeDamage(25f, this.gameObject);
         }
     }
 }
