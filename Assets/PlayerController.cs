@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
             isJumping = true;
         }
-       
+    }
         void OnCollisionEnter2D(Collision2D other)
 
         {
@@ -81,10 +81,6 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
             }
         }
-
-    }
-
-   
 }
 
 
