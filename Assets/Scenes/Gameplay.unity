@@ -1305,6 +1305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9923203f692e60c4bb8c4673b5265c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 1
+  enemyDamageFromBullet: 1
   player: {fileID: 570887456}
 --- !u!50 &832921065
 Rigidbody2D:
@@ -3330,7 +3332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71d73cb885ac11498b57509aa6132aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolEnemyHealth: 1
+  patrolEnemyHealth: 10
   patrolEnemyDamagedFromBullet: 1
 --- !u!50 &2135443962
 Rigidbody2D:
