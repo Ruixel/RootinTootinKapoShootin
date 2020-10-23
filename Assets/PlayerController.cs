@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
 //=======
     private Rigidbody2D rigidbody2d;
+    private TrailRenderer trail;
     
 //>>>>>>> Stashed changes
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Awake()
     {
-
+        trail = transform.Find("Trail").GetComponent<TrailRenderer>();
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
     }
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         // dash code
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            trail.emitting = true;
             currentDashTime = dashTime;
         }
         if (currentDashTime > 0)
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            trail.emitting = false;
             speed = normalSpeed;
         }
 
