@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     private bool isJumping;
 
+    int numberOfBullets = 1;
+
 //<<<<<<< Updated upstream
 
     public GameObject bulletPrefab;
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            if (numberOfBullets > 1)
+            {
+                for (int i = 1; i < numberOfBullets; i++) {
+                    Instantiate(bulletPrefab, transform.position + new Vector3(0, i, 0), Quaternion.identity);
+                }
+            }
         }
 
         // dash code
@@ -88,6 +96,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("floor"))
         {
             isJumping = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "NumberOfBulletsPowerup")
+        {
+            numberOfBullets++;
         }
     }
 }
