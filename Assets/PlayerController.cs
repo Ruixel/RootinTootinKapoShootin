@@ -10,9 +10,8 @@ public class PlayerController : MonoBehaviour
     float normalSpeed = 5;
     float dashSpeed;
 
-    bool dashing = false;
-
     float xInput;
+    float yInput;
 
     float dashTime = 0.3f;
     float currentDashTime = 0;
@@ -86,17 +85,19 @@ public class PlayerController : MonoBehaviour
         {
             currentDashTime = currentDashTime - Time.deltaTime;
             speed = dashSpeed;
+            yInput = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
         }
         else
         {
             trail.emitting = false;
             speed = normalSpeed;
             gameObject.layer = 0;
+            yInput = 0;
         }
 
         // movement code
         xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(xInput, 0, 0);
+        transform.Translate(xInput, yInput, 0);
 
         //jump code
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
