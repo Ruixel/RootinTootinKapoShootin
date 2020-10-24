@@ -405,8 +405,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5334020169043870260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bad4069da36b94589c30c86ff43e26, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e6db82e6dfb60b49a69a8c6a712614f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolEnemyHealth: 10
-  patrolEnemyDamagedFromBullet: 1
+  enemyHealth: 4
+  enemyDamageFromBullet: 1

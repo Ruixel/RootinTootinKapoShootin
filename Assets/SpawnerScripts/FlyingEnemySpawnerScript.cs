@@ -10,10 +10,14 @@ public class FlyingEnemySpawnerScript : MonoBehaviour
 
     public GameObject flyingEnemyPrefab;
     public GameObject player;
+
+    EnemyManager m_EnemyManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        m_EnemyManager = GameObject.FindObjectOfType<EnemyManager>();
+        if (m_EnemyManager == null)
+            Debug.LogError("Could not find enemy manager");
     }
 
     // Update is called once per frame
@@ -24,6 +28,7 @@ public class FlyingEnemySpawnerScript : MonoBehaviour
             GameObject flyingEnemy = Instantiate(flyingEnemyPrefab, transform.position, Quaternion.identity);
             flyingEnemy.GetComponent<FlyingEnemyController>().player = player;
 
+            m_EnemyManager.enemySpawn(flyingEnemy);
         }
 
     }
