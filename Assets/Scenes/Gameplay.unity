@@ -1406,6 +1406,52 @@ MonoBehaviour:
   flyingEnemyPrefab: {fileID: 4075654792864227079, guid: 450afbc56b84e3047a401dac32c3ae63,
     type: 3}
   player: {fileID: 570887456}
+--- !u!1 &789139294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789139296}
+  - component: {fileID: 789139295}
+  m_Layer: 0
+  m_Name: SludgeEnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &789139295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789139294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33c6b92657b41647bdbd69b1c87889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sludgeEnemyPrefab: {fileID: 4911842511626975104, guid: 982822c41b7d33a4cb5b3f24d321b30d,
+    type: 3}
+  player: {fileID: 570887456}
+--- !u!4 &789139296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789139294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.55, y: -3.75, z: -6.0976562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836897108
 GameObject:
   m_ObjectHideFlags: 0
