@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4075654792864227085}
   - component: {fileID: 4075654792864227081}
   - component: {fileID: 4075654792864227086}
+  - component: {fileID: 2910300720925910223}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -190,8 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9923203f692e60c4bb8c4673b5265c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
-  enemyDamageFromBullet: 1
   player: {fileID: 0}
 --- !u!61 &4075654792864227085
 BoxCollider2D:
@@ -253,3 +252,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &2910300720925910223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075654792864227079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6db82e6dfb60b49a69a8c6a712614f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 2
+  enemyDamageFromBullet: 1
