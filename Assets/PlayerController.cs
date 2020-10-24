@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     int numberOfBullets = 1;
 
+    float knockbackForce = 10;
+
 //<<<<<<< Updated upstream
 
     public GameObject bulletPrefab;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private TrailRenderer trail;
     
 //>>>>>>> Stashed changes
+
+    // Unity Built In functions
     // Start is called before the first frame update
     void Start()
     {
@@ -93,9 +97,18 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
 
     {
+        // should probably be a switch statement
         if (other.gameObject.CompareTag("floor"))
         {
             isJumping = false;
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Vector3 displacementToOther = other.transform.position - transform.position;
+            Vector3 directionToOther = displacementToOther.normalized;
+            Vector2 directionToOther2D = new Vector2(directionToOther.x, directionToOther.y);
+            rigidbody2d.AddForce(directionToOther2D * knockbackForce * -1, ForceMode2D.Impulse);
         }
     }
 
@@ -105,6 +118,17 @@ public class PlayerController : MonoBehaviour
         {
             numberOfBullets++;
         }
+    }
+
+    // newly written functions
+    void Dash()
+    {
+
+    }
+
+    void Knockback()
+    {
+
     }
 }
 

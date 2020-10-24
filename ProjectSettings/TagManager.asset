@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - mground
   - NumberOfBulletsPowerup
+  - Enemy
   layers:
   - Default
   - TransparentFX
