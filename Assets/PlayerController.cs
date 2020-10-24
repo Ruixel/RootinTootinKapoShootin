@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
     float speed = 5;
 
     float normalSpeed = 5;
-    float dashSpeed = 25;
+    float dashSpeed;
+
+    float xInput;
 
     float dashTime = 0.3f;
     float currentDashTime = 0;
@@ -17,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     int numberOfBullets = 1;
 
-    float knockbackForce = 10;
+    float knockbackForce = 50;
 
 //<<<<<<< Updated upstream
 
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        dashSpeed = normalSpeed * 5;
     }
     private void Awake()
     {
@@ -80,10 +82,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // movement code
-        float xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+
         transform.Translate(xInput, 0, 0);
-        
-        
+
         //jump code
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
@@ -117,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if(collider.tag == "NumberOfBulletsPowerup")
         {
             numberOfBullets++;
+            Destroy(collider.gameObject);
         }
     }
 
