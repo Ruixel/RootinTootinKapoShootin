@@ -9,6 +9,12 @@ public class EnemyHP : MonoBehaviour
     private int enemyHealth = 10;
     [SerializeField]
     private int enemyDamageFromBullet = 1;
+    [SerializeField]
+    private string deathCry;
+
+    [SerializeField]
+    private string bulletImpact;
+
     
 
     private UnityEngine.Object explosionRef;
@@ -35,6 +41,9 @@ public class EnemyHP : MonoBehaviour
             if (enemyHealth <=0){
                 killTheBeast();
             }
+            else {
+                AudioManager.PlaySound(bulletImpact);
+            }
         }
     }
 
@@ -44,7 +53,7 @@ public class EnemyHP : MonoBehaviour
         {
             m_EnemyManager.onEnemyDeath.Invoke(gameObject);
         }
-
+        AudioManager.PlaySound(deathCry);
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         Destroy(gameObject);
