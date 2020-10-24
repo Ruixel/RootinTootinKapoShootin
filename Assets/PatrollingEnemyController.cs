@@ -5,20 +5,22 @@ using UnityEngine;
 public class PatrollingEnemyController : MonoBehaviour
 {
 
-    float speed = 1;
+    float speed = 3;
 
-    float patrolTime = 1.5f;
-    float currentPatrolTime = 0;
+    float patrolTime = 3f;
+    float currentPatrolTime = 0f;
 
     float xInput;
 
-
+    Rigidbody2D rb;
 
 
     // Start is called before the first frame update
     void Start()
     {
         xInput = speed * Time.deltaTime;
+        currentPatrolTime = Random.Range(-1f, 4f);
+        patrolTime = Random.Range(1f, 8f);
     }
 
     // Update is called once per frame
