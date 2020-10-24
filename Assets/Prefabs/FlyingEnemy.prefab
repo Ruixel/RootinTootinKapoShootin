@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4075654792864227081}
   - component: {fileID: 4075654792864227086}
   - component: {fileID: 2910300720925910223}
+  - component: {fileID: 4946100305513371420}
   m_Layer: 9
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -125,7 +126,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.0385, y: 2.2385, z: -3.6523438}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4075654792511305891}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -216,6 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 2
   enemyDamageFromBullet: 1
+  numberOfBulletsPowerupPrefab: {fileID: 3405603264511358821, guid: ea0226a8111909b438a0aa97b3dc3a5f,
+    type: 3}
 --- !u!212 &4946100305513371420
 SpriteRenderer:
   m_ObjectHideFlags: 0

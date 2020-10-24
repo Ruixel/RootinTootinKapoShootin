@@ -8,7 +8,7 @@ public class PowerupSpawnerScript : MonoBehaviour
     public GameObject numberOfBulletsPowerupPrefab;
 
 
-    float timeBetweenSpawn = 5f;
+    float timeBetweenSpawn = 30f;
     float timeSinceSpawn = 0f;
     
 

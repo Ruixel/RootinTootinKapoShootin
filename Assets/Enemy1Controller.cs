@@ -13,6 +13,8 @@ public class Enemy1Controller : MonoBehaviour
     float speed = 5;
     private UnityEngine.Object explosionRef;
 
+    GameObject numberOfBulletsPowerupPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class Enemy1Controller : MonoBehaviour
 
     private void killTheBeast()
     {
+        Instantiate(numberOfBulletsPowerupPrefab, transform.position, Quaternion.identity);
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         Destroy(gameObject);
