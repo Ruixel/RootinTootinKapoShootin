@@ -21,6 +21,7 @@ public class StatsUI : MonoBehaviour
         {
             Debug.LogError("No Enemy Manager Found");
         }
+
         m_EnemyManager.onEnemyDeath += incrementDeathCounter;
 
         m_enemyNumberTextComponent = m_enemyNumberLabel.GetComponent<Text>();
