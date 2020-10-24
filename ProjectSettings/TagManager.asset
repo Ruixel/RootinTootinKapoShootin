@@ -10,6 +10,7 @@ TagManager:
   - mground
   - NumberOfBulletsPowerup
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - DashLayer
+  - Enemy
   - 
   - 
   - 
