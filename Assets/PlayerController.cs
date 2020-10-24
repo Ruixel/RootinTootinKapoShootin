@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     float normalSpeed = 5;
     float dashSpeed;
 
+    bool dashing = false;
+
     float xInput;
 
     float dashTime = 0.3f;
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     int numberOfBullets = 1;
 
-    float knockbackForce = 50;
+    float knockbackForce = 30;
 
 //<<<<<<< Updated upstream
 
@@ -58,7 +60,8 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             if (numberOfBullets > 1)
             {
-                for (int i = 1; i < numberOfBullets; i++) {
+                for (int i = 1; i < numberOfBullets; i++)
+                {
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, i, 0), Quaternion.identity);
                 }
             }
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             trail.emitting = true;
             currentDashTime = dashTime;
+            gameObject.layer = 8;
         }
         if (currentDashTime > 0)
         {
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             trail.emitting = false;
             speed = normalSpeed;
+            gameObject.layer = 0;
         }
 
         // movement code
@@ -93,24 +98,32 @@ public class PlayerController : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
             isJumping = true;
         }
+
+
+
     }
 
 
     void OnCollisionEnter2D(Collision2D other)
-
     {
         // should probably be a switch statement
         if (other.gameObject.CompareTag("floor"))
         {
             isJumping = false;
         }
-
+        
         if (other.gameObject.CompareTag("Enemy"))
         {
             Vector3 displacementToOther = other.transform.position - transform.position;
             Vector3 directionToOther = displacementToOther.normalized;
             Vector2 directionToOther2D = new Vector2(directionToOther.x, directionToOther.y);
             rigidbody2d.AddForce(directionToOther2D * knockbackForce * -1, ForceMode2D.Impulse);
+        }
+        
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+
         }
     }
 
@@ -123,16 +136,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // newly written functions
-    void Dash()
-    {
-
-    }
-
-    void Knockback()
-    {
-
-    }
 }
 
 
