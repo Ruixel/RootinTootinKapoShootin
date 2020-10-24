@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class FlyingEnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private int enemyHealth = 10;
-    [SerializeField]
-    private int enemyDamageFromBullet = 1;
-    public GameObject player;
 
+    public GameObject player;
     float speed = 5;
-    private UnityEngine.Object explosionRef;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        explosionRef = Resources.Load("Explosion");
+        
 
     }
 
@@ -31,21 +27,4 @@ public class FlyingEnemyController : MonoBehaviour
         transform.Translate(velocity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.tag == "Bullet")
-        {
-            enemyHealth -= enemyDamageFromBullet;
-            if (enemyHealth <=0){
-                killTheBeast();
-            }
-        }
-    }
-
-    private void killTheBeast()
-    {
-        GameObject explosion = (GameObject)Instantiate(explosionRef);
-        explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
-        Destroy(gameObject);
-    }
 }
