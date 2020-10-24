@@ -27,11 +27,16 @@ public class PatrollingEnemyHP : MonoBehaviour
             if (patrolEnemyHealth <=0){
                 killTheBeast();
             }
+            else{
+                SoundManager.PlaySound("hitpatrol");
+            }
+
         }
     }
 
     private void killTheBeast()
     {
+        SoundManager.PlaySound("bigexplode");
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         Destroy(gameObject);

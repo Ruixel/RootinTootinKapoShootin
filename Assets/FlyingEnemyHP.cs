@@ -32,11 +32,15 @@ public class FlyingEnemyHP : MonoBehaviour
             if (enemyHealth <=0){
                 killTheBeast();
             }
+            else{
+                SoundManager.PlaySound("hitpatrol");
+            }
         }
     }
 
     private void killTheBeast()
     {
+        SoundManager.PlaySound("explode");
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         Destroy(gameObject);
