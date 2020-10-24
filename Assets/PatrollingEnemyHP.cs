@@ -10,9 +10,12 @@ public class PatrollingEnemyHP : MonoBehaviour
     [SerializeField]
     private int patrolEnemyDamagedFromBullet = 1;
     private UnityEngine.Object explosionRef;
+
+    EnemyManager m_EnemyManager;
     // Start is called before the first frame update
     void Start()
     {
+        m_EnemyManager = GameObject.FindObjectOfType<EnemyManager>();
         explosionRef = Resources.Load("Explosion");
 
     }
@@ -32,6 +35,11 @@ public class PatrollingEnemyHP : MonoBehaviour
 
     private void killTheBeast()
     {
+        if (m_EnemyManager.onEnemyDeath != null)
+        {
+            m_EnemyManager.onEnemyDeath.Invoke(this.gameObject);
+        }
+
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         Destroy(gameObject);
