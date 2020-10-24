@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
 
     float dashTime = 0.3f;
     float currentDashTime = 0;
+    float timeBetweenDash = 2f;
+    float timeSinceDash = 0f;
     public float jumpSpeed;
     private bool isJumping;
+
 
     int numberOfBullets = 1;
 
@@ -72,8 +75,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // dash code
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > timeSinceDash)
         {
+            timeSinceDash = timeBetweenDash + Time.time;
             trail.emitting = true;
             currentDashTime = dashTime;
             gameObject.layer = 8;

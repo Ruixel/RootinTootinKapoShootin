@@ -9,11 +9,14 @@ public class EnemyHP : MonoBehaviour
     private int enemyHealth = 10;
     [SerializeField]
     private int enemyDamageFromBullet = 1;
+    
     [SerializeField]
     private string deathCry;
 
     [SerializeField]
     private string bulletImpact;
+
+    public GameObject numberOfBulletsPowerupPrefab;
 
     
 
@@ -49,6 +52,12 @@ public class EnemyHP : MonoBehaviour
 
     private void killTheBeast()
     {
+
+        float chance = Random.Range(0f, 100f);
+        if (chance > 90) {
+            Instantiate(numberOfBulletsPowerupPrefab, transform.position, Quaternion.identity);
+        }
+
         if (m_EnemyManager.onEnemyDeath != null)
         {
             m_EnemyManager.onEnemyDeath.Invoke(gameObject);

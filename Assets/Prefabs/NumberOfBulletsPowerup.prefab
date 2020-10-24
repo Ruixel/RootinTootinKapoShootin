@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3405603264092860367}
   - component: {fileID: 3405603264092860353}
   - component: {fileID: 3405603264092860366}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NumberOfBulletPowerup (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3405603264511358823}
   - component: {fileID: 3405603264511358820}
   - component: {fileID: 3405603264511358617}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NumberOfBulletsPowerup
   m_TagString: NumberOfBulletsPowerup
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 3405603265132101419}
   - component: {fileID: 3405603265132101421}
   - component: {fileID: 3405603265132101418}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NumberOfBulletPowerup (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 6578225026882442166}
   - component: {fileID: 5428527030882521115}
   - component: {fileID: 4501380864065363537}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

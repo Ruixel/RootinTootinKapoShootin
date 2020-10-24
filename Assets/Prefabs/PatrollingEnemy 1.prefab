@@ -362,8 +362,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 4
   enemyDamageFromBullet: 1
+<<<<<<< HEAD
   deathCry: bigexplode
   bulletImpact: hitpatrol
+=======
+  numberOfBulletsPowerupPrefab: {fileID: 3405603264511358821, guid: ea0226a8111909b438a0aa97b3dc3a5f,
+    type: 3}
+>>>>>>> 5753990d26bc4a85163891ba599a657f53a544a1
 --- !u!212 &7484549660023749442
 SpriteRenderer:
   m_ObjectHideFlags: 0

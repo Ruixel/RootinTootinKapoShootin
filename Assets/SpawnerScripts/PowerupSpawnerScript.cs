@@ -8,8 +8,8 @@ public class PowerupSpawnerScript : MonoBehaviour
     public GameObject numberOfBulletsPowerupPrefab;
 
 
-    float timeBetweenSpawn = 5f;
-    float timeSinceSpawn = 0f;
+    float timeBetweenSpawn = 40f;
+    float timeSinceSpawn = 15f;
     
 
     // Start is called before the first frame update
