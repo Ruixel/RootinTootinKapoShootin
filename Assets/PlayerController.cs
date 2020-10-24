@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 //=======
     private Rigidbody2D rigidbody2d;
     private TrailRenderer trail;
+    private Transform m_gunJoint;
+    private SpriteRenderer m_spriteRenderer;
     
 //>>>>>>> Stashed changes
 
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         trail = transform.Find("Trail").GetComponent<TrailRenderer>();
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
+        m_gunJoint = transform.Find("GunJoint");
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -88,7 +92,6 @@ public class PlayerController : MonoBehaviour
 
         // movement code
         xInput = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-
         transform.Translate(xInput, 0, 0);
 
         //jump code
@@ -99,8 +102,18 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
         }
 
+        float angle = Mathf.Rad2Deg * Mathf.Atan2(displacementFromMouse.y, displacementFromMouse.x);
+        m_gunJoint.rotation = Quaternion.Euler(0, 0, angle);
 
+        Debug.Log(Mathf.Rad2Deg * angle);
 
+        if (angle + 90 > 0 && angle + 90 < 180)
+        {
+            m_spriteRenderer.flipX = false;
+        } else
+        {
+            m_spriteRenderer.flipX = true;
+        }
     }
 
 
