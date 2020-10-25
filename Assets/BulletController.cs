@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
-    float speed = 7;
+    public float speed = 7;
     Vector3 moveDirection;
 
     // Start is called before the first frame update

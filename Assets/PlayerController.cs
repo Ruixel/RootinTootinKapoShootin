@@ -22,9 +22,14 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
 
 
+    float timeBetweenShots = 0.2f;
+    float timeSinceLastShot = 0f;
+
     int numberOfBullets = 1;
 
-    float knockbackForce = 30;
+    float knockbackForce = 30f;
+
+    float bulletSpeed = 7f;
 
     public UnityAction<float> onDash;
 
@@ -64,16 +69,19 @@ public class PlayerController : MonoBehaviour
 
 
         // bullet shoot code
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time > timeSinceLastShot)
         {
+            timeSinceLastShot = Time.time + timeBetweenShots;
             GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<BulletController>().speed = bulletSpeed;
             if (numberOfBullets > 1)
             {
                 for (int i = 1; i < numberOfBullets; i++)
                 {
                     float randomYPos = Random.Range(0f, 1f);
                     float randomXPos = Random.Range(-1f, 1f);
-                    Instantiate(bulletPrefab, transform.position + new Vector3(randomXPos, randomYPos, 0), Quaternion.identity);
+                    GameObject bulletExtra = Instantiate(bulletPrefab, transform.position + new Vector3(randomXPos, randomYPos, 0), Quaternion.identity);
+                    bulletExtra.GetComponent<BulletController>().speed = bulletSpeed;
                 }
             }
         }
@@ -165,7 +173,18 @@ public class PlayerController : MonoBehaviour
 
         if (collider.tag == "HealthPowerup")
         {
-            GetComponent<Health>().currentHealth = GetComponent<Health>().currentHealth + 10f;
+            GetComponent<Health>().currentHealth = GetComponent<Health>().currentHealth + 20f;
+            Destroy(collider.gameObject);
+        }
+
+        if (collider.tag == "FireratePowerup")
+        {
+            if(timeBetweenShots > 0f)
+            {
+                timeBetweenShots = timeBetweenShots = 0.2f;
+            }
+
+            bulletSpeed = bulletSpeed + 1f;
             Destroy(collider.gameObject);
         }
     }

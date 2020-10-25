@@ -20,6 +20,8 @@ public class EnemyHP : MonoBehaviour
 
     public GameObject healthPowerupPrefab;
 
+    public GameObject FireratePowerupPrefab;
+
     float chance;
 
     private UnityEngine.Object explosionRef;
@@ -62,6 +64,10 @@ public class EnemyHP : MonoBehaviour
         else if (chance > 80 && chance < 91)
         {
             Instantiate(healthPowerupPrefab, transform.position, Quaternion.identity);
+        }
+        else if (chance > 70 && chance < 81)
+        {
+            Instantiate(FireratePowerupPrefab, transform.position, Quaternion.identity);
         }
 
         if (m_EnemyManager.onEnemyDeath != null)

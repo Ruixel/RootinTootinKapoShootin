@@ -166,6 +166,8 @@ MonoBehaviour:
     type: 3}
   healthPowerupPrefab: {fileID: 622638033288243900, guid: a617afe23683fa941ad3a72598c68ebc,
     type: 3}
+  FireratePowerupPrefab: {fileID: 2882377409035884205, guid: fa3cd72228ca7534bb1b8f1315870bc0,
+    type: 3}
 --- !u!114 &2862944006549802275
 MonoBehaviour:
   m_ObjectHideFlags: 0
