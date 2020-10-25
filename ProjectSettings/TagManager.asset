@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Wall
   - HealthPowerup
+  - FireratePowerup
   layers:
   - Default
   - TransparentFX
