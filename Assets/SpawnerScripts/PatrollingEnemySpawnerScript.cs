@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PatrollingEnemySpawnerScript : MonoBehaviour
 {
-    float timeBetweenSpawn = 4f;
+
+    float initialTimeBetweenSpawn = 10f;
+    float timeBetweenSpawn = 10f;
     float timeSinceSpawn = 4f;
+
+    float difficultyModifier = 10f;
 
     public GameObject patrollingEnemyPrefab;
 
@@ -21,6 +25,13 @@ public class PatrollingEnemySpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (timeBetweenSpawn > 3f)
+        {
+            timeBetweenSpawn = initialTimeBetweenSpawn - (Time.time / difficultyModifier);
+        }
+
+
         if (Time.time > timeSinceSpawn)
         {
             timeSinceSpawn = Time.time + timeBetweenSpawn;

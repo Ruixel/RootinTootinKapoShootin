@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SludgeSpawnerScript : MonoBehaviour
 {
-    float timeBetweenSpawn = 30f;
-    float timeSinceSpawn = 0f;
-    int numberToSpawn = 20;
 
+    float initialTimeBetweenSpawn = 40f;
+    float timeBetweenSpawn = 40f;
+    float timeSinceSpawn = 0f;
+
+    int initialNumberToSpawn = 10;
+    int numberToSpawn = 10;
+
+    float difficultyModifier = 30;
+    float spawningDifficultyModifier = 10;
 
     public GameObject sludgeEnemyPrefab;
     public GameObject player;
@@ -21,6 +27,14 @@ public class SludgeSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (timeBetweenSpawn > 7f)
+        {
+            timeBetweenSpawn = initialTimeBetweenSpawn - (Time.time / difficultyModifier);
+            numberToSpawn = initialNumberToSpawn + Mathf.RoundToInt((Time.time / spawningDifficultyModifier));
+        }
+
+
         if (Time.time > timeSinceSpawn)
         {
             timeSinceSpawn = Time.time + timeBetweenSpawn;

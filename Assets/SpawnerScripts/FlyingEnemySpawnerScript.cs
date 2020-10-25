@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FlyingEnemySpawnerScript : MonoBehaviour
 {
-
-    float timeBetweenSpawn = 2f;
+    float initialTimeBetweenSpawn = 10f;
+    float timeBetweenSpawn = 10f;
     float timeSinceSpawn = 2f;
 
     public GameObject flyingEnemyPrefab;
     public GameObject player;
+
+    float difficultyModifier = 7f;
 
     EnemyManager m_EnemyManager;
     // Start is called before the first frame update
@@ -23,6 +25,12 @@ public class FlyingEnemySpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (timeBetweenSpawn > 1f)
+        {
+            timeBetweenSpawn = initialTimeBetweenSpawn - (Time.time / difficultyModifier);
+        }
+        
         if (Time.time > timeSinceSpawn) {
             timeSinceSpawn = Time.time + timeBetweenSpawn;
             GameObject flyingEnemy = Instantiate(flyingEnemyPrefab, transform.position, Quaternion.identity);

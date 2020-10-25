@@ -71,7 +71,9 @@ public class PlayerController : MonoBehaviour
             {
                 for (int i = 1; i < numberOfBullets; i++)
                 {
-                    Instantiate(bulletPrefab, transform.position + new Vector3(0, i, 0), Quaternion.identity);
+                    float randomYPos = Random.Range(0f, 1f);
+                    float randomXPos = Random.Range(-1f, 1f);
+                    Instantiate(bulletPrefab, transform.position + new Vector3(randomXPos, randomYPos, 0), Quaternion.identity);
                 }
             }
         }
