@@ -366,6 +366,8 @@ MonoBehaviour:
   bulletImpact: hitpatrol
   numberOfBulletsPowerupPrefab: {fileID: 3405603264511358821, guid: ea0226a8111909b438a0aa97b3dc3a5f,
     type: 3}
+  healthPowerupPrefab: {fileID: 622638033288243900, guid: a617afe23683fa941ad3a72598c68ebc,
+    type: 3}
 --- !u!212 &7484549660023749442
 SpriteRenderer:
   m_ObjectHideFlags: 0

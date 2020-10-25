@@ -162,6 +162,12 @@ public class PlayerController : MonoBehaviour
             numberOfBullets++;
             Destroy(collider.gameObject);
         }
+
+        if (collider.tag == "HealthPowerup")
+        {
+            GetComponent<Health>().currentHealth = GetComponent<Health>().currentHealth + 10f;
+            Destroy(collider.gameObject);
+        }
     }
 
 }

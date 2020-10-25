@@ -18,7 +18,9 @@ public class EnemyHP : MonoBehaviour
 
     public GameObject numberOfBulletsPowerupPrefab;
 
-    
+    public GameObject healthPowerupPrefab;
+
+    float chance;
 
     private UnityEngine.Object explosionRef;
     EnemyManager m_EnemyManager;
@@ -53,9 +55,13 @@ public class EnemyHP : MonoBehaviour
     private void killTheBeast()
     {
 
-        float chance = Random.Range(0f, 100f);
+        chance = Random.Range(0f, 100f);
         if (chance > 90) {
             Instantiate(numberOfBulletsPowerupPrefab, transform.position, Quaternion.identity);
+        }
+        else if (chance > 80 && chance < 91)
+        {
+            Instantiate(healthPowerupPrefab, transform.position, Quaternion.identity);
         }
 
         if (m_EnemyManager.onEnemyDeath != null)
