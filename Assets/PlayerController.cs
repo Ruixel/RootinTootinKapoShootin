@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +14,9 @@ public class PlayerController : MonoBehaviour
     float xInput;
     float yInput;
 
-    float dashTime = 0.3f;
+    public float dashTime = 0.3f;
     float currentDashTime = 0;
-    float timeBetweenDash = 2f;
+    public float timeBetweenDash = 2f;
     float timeSinceDash = 0f;
     public float jumpSpeed;
     private bool isJumping;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     int numberOfBullets = 1;
 
     float knockbackForce = 30;
+
+    public UnityAction<float> onDash;
 
 //<<<<<<< Updated upstream
 
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
             trail.emitting = true;
             currentDashTime = dashTime;
             gameObject.layer = 8;
+
+            if (onDash != null)
+            {
+                onDash.Invoke(timeBetweenDash);
+            }
         }
         if (currentDashTime > 0)
         {
