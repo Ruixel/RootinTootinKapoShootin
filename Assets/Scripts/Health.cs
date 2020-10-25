@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
 
     public float currentHealth { get; set; }
 
+    [SerializeField]
+    private string deathCry;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
+            AudioManager.PlaySound(deathCry);
+
             if (onDeath != null)
             {
                 onDeath.Invoke();

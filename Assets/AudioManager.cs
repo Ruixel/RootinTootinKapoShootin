@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioClip bigexplode, bump, fire, explode, hitpatrol;
+    public static AudioClip bigexplode, bump, fire, explode, hitpatrol, deathknoll, switchsound;
     static AudioSource audiosrc;
     // Start is called before the first frame update
     void Start()
@@ -14,17 +14,14 @@ public class AudioManager : MonoBehaviour
         fire = Resources.Load<AudioClip>("fire");
         hitpatrol = Resources.Load<AudioClip>("hitpatrol");
         bump = Resources.Load<AudioClip>("bump");
+        deathknoll = Resources.Load<AudioClip>("deathknoll");
+        switchsound = Resources.Load<AudioClip>("switchsound");
 
         audiosrc = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void PlaySound(string clip)
     {
-        
-    }
-
-    public static void PlaySound (string clip){
         switch (clip)
         {
             case "fire":
@@ -41,6 +38,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case "bigexplode":
                 audiosrc.PlayOneShot(bigexplode);
+                break;
+            case "deathknoll":
+                audiosrc.PlayOneShot(deathknoll);
+                break;
+            case "switchsound":
+                audiosrc.PlayOneShot(switchsound);
                 break;
             default:
                 Debug.LogWarning("Sound: " + clip + " not found!");
